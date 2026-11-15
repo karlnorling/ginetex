@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/css",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "CSS background-image sprite for laundry care symbols — class-based display, no JavaScript required",
   "keywords": [
     "background-image",
@@ -51,8 +51,8 @@
     "type-check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@ginetex/assets": "^0.0.0",
-    "@ginetex/core": "^0.0.0"
+    "@ginetex/assets": "^0.1.0",
+    "@ginetex/core": "^0.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

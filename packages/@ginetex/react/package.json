@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Accessible React components for all laundry care symbols — fully typed, zero runtime dependencies beyond React",
   "keywords": [
     "accessible",
@@ -52,7 +52,7 @@
     "type-check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@ginetex/core": "^0.0.0"
+    "@ginetex/core": "^0.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
