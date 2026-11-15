@@ -1,0 +1,112 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SVGSpriteStories from './SVGSprite.stories';
+
+<Meta of={SVGSpriteStories} />
+
+# SVG Sprite
+
+A single `sprite.svg` contains all laundry care symbols as `<symbol>` elements. Reference any symbol with `<use href="#id">` — one HTTP request serves every symbol.
+
+## Installation
+
+```sh
+npm install @ginetex/sprite
+```
+
+## When to use
+
+| Approach | Best for |
+| -------- | -------- |
+| **SVG sprite** | Plain HTML, no framework, single network request |
+| React components | React/JSX — richer props, TypeScript, tree-shakeable |
+| CSS sprite | Class-name driven usage, CMS output, no JavaScript |
+
+---
+
+## Usage
+
+### External file reference (recommended)
+
+```html
+<svg width="64" height="64" role="img" aria-label="Wash at or below 30 °C">
+  <title>Wash at or below 30 °C</title>
+  <use href="/assets/sprites/sprite.svg#wash-30" />
+</svg>
+```
+
+### Inline sprite
+
+```html
+<div aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <!-- paste contents of sprite.svg here -->
+</div>
+
+<svg width="64" height="64" role="img" aria-label="Wash at or below 30 °C">
+  <title>Wash at or below 30 °C</title>
+  <use href="#wash-30" />
+</svg>
+```
+
+### React with bundler import
+
+```tsx
+import spriteUrl from '@ginetex/sprite/sprite.svg';
+
+<svg width={64} height={64} role="img" aria-label="Wash at or below 30 °C">
+  <title>Wash at or below 30 °C</title>
+  <use href={`${spriteUrl}#wash-30`} />
+</svg>
+```
+
+---
+
+## Symbol ID pattern
+
+Symbol IDs are the symbol codes: `wash-30`, `do-not-tumble-dry`, `iron-low`, etc. Enumerate all IDs from `sprite-ids.json`:
+
+```ts
+import ids from '@ginetex/sprite/sprite-ids.json';
+```
+
+---
+
+## Washing symbols
+
+<Canvas of={SVGSpriteStories.Washing} />
+
+---
+
+## Bleaching symbols
+
+<Canvas of={SVGSpriteStories.Bleaching} />
+
+---
+
+## Drying symbols
+
+<Canvas of={SVGSpriteStories.Drying} />
+
+---
+
+## Ironing symbols
+
+<Canvas of={SVGSpriteStories.Ironing} />
+
+---
+
+## Professional care symbols
+
+<Canvas of={SVGSpriteStories.ProfessionalCare} />
+
+---
+
+## All symbols
+
+<Canvas of={SVGSpriteStories.AllSymbols} />
+
+---
+
+## Single icon with controls
+
+<Canvas of={SVGSpriteStories.SingleIcon} />
+<Controls of={SVGSpriteStories.SingleIcon} />

@@ -1,0 +1,81 @@
+---
+title: "@ginetex/core"
+description: Core API for querying laundry care symbol metadata — symbol data, categories, and TypeScript types.
+---
+
+## Installation
+
+```sh
+npm install @ginetex/core
+```
+
+## API reference
+
+| Function                        | Returns      | Description                                             |
+|---------------------------------|--------------|---------------------------------------------------------|
+| `getAllSymbols()`                  | `CareSymbol[]`     | Returns every symbol in the library.                      |
+| `getSymbol(id)`                   | `CareSymbol`       | Returns a single symbol by its ID. Throws if not found.   |
+| `getSymbolsByCategory(category)`  | `CareSymbol[]`     | Returns all symbols belonging to the given category.      |
+
+```ts
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@ginetex/core';
+
+// All symbols
+const symbols = getAllSymbols();
+
+// Single symbol by ID
+const wash30 = getSymbol('wash-30');
+
+// All washing symbols
+const washing = getSymbolsByCategory('washing');
+```
+
+## TypeScript types
+
+```ts
+type CareSymbolCategory =
+  | 'washing'
+  | 'bleaching'
+  | 'drying'
+  | 'ironing'
+  | 'professional-care';
+
+type CareSymbolAssets = {
+  svg: string;
+  png: Record<240 | 512 | 768 | 1024 | 2048, string>;
+  webp: Record<240 | 512 | 768 | 1024 | 2048, string>;
+};
+
+type CareSymbol = {
+  id: string;          // e.g. 'wash-30'
+  code: string;        // e.g. 'wash-30' (same as id)
+  name: string;        // e.g. 'Wash at or below 30 °C'
+  description: string; // Plain-language description of the symbol
+  category: CareSymbolCategory;
+  svg: string;         // Inline SVG markup
+  assets: CareSymbolAssets;
+};
+```
+
+## Category values
+
+| Value               | Description                                                 |
+|---------------------|-------------------------------------------------------------|
+| `washing`           | Wash tub: maximum temperature, process, hand wash           |
+| `bleaching`         | Triangle: chlorine / oxygen bleach                          |
+| `drying`            | Square: tumble drying and natural drying                    |
+| `ironing`           | Iron: maximum soleplate temperature                         |
+| `professional-care` | Circle: professional dry cleaning and wet cleaning          |
+
+## ID format
+
+Symbol IDs are stable kebab-case codes. The symbols have no official numbering, so the codes
+are assigned in `bin/scrape.ts` and never change once published. A few examples:
+
+- `wash-30`, `wash-30-mild`, `hand-wash`, `do-not-wash`
+- `bleach-non-chlorine`, `do-not-bleach`
+- `tumble-dry-low`, `line-dry-in-shade`, `dry-flat`
+- `iron-medium`, `do-not-iron`
+- `dry-clean-pce-mild`, `wet-clean`, `do-not-dry-clean`
+
+The full list is in the [Symbol Gallery](/ginetex/gallery/).

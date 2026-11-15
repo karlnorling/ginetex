@@ -1,0 +1,23 @@
+// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
+// Run 'yarn generate' to regenerate.
+
+import type { ParsedSvg } from '@ginetex/core';
+import { SymbolElement } from './SymbolElement.js';
+import type { SymbolElementContent } from './SymbolElement.js';
+
+const _svg: ParsedSvg = {
+  attrs: "xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 375 375\"",
+  body: "<path d=\"M311.486 187.5c.01-68.705-55.503-124.408-123.986-124.408S63.504 118.795 63.514 187.5c-.01 68.705 55.503 124.408 123.986 124.408S311.496 256.205 311.486 187.5z\" style=\"fill:#000;fill-opacity:1;fill-rule:evenodd;stroke:#000;stroke-width:13.58843;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1\" transform=\"matrix(.9053 0 0 .93474 17.756 20.966)\"/><path d=\"m55.8 93.75 262.95 225.304m.45-225.304L56.25 319.054\" style=\"fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000;stroke-width:13.758195;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\" transform=\"matrix(1 0 0 .82546 .45 30.022)\"/>",
+  height: "375",
+  width: "375",
+};
+const _title = "Do not wet clean";
+const _description = "Do not wet clean";
+
+export class DoNotWetClean extends SymbolElement {
+  static readonly tagName = 'ginetex-do-not-wet-clean';
+
+  protected content(): SymbolElementContent {
+    return { description: _description, svg: _svg, title: _title };
+  }
+}

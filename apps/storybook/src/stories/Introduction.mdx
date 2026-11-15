@@ -1,0 +1,141 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# GINETEX Care Symbols
+
+Accessible, framework-agnostic packages for the **GINETEX / ISO 3758** laundry care symbols.
+
+[![CI](https://github.com/karlnorling/ginetex/actions/workflows/ci.yml/badge.svg)](https://github.com/karlnorling/ginetex/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/karlnorling/ginetex/blob/main/LICENSE)
+
+---
+
+## What are the GINETEX care symbols?
+
+The GINETEX care symbols, standardised as ISO 3758, are the pictograms on textile care labels. They
+are always listed in the same order: washing, bleaching, drying, ironing and professional care.
+Dots indicate temperature; one bar under a symbol means a mild process, two bars a very mild one;
+a cross means the treatment is not allowed.
+
+| Category | Symbols | Base shape | Covers |
+| -------- | ------- | ---------- | ------ |
+| `washing` | 9 | Wash tub | Maximum temperature, mild / very mild process, hand wash |
+| `bleaching` | 5 | Triangle | Any bleach, oxygen / non-chlorine only, do not bleach |
+| `drying` | 12 | Square | Tumble drying (dots = heat) and natural drying (line, flat, drip, shade) |
+| `ironing` | 5 | Iron | Maximum soleplate temperature (dots = heat) |
+| `professional-care` | 12 | Circle | Professional dry cleaning (P, F solvents) and wet cleaning (W) |
+
+---
+
+## Packages
+
+| Package | Description |
+| ------- | ----------- |
+| [`@ginetex/react`](/?path=/docs/care-symbols-react-components--docs) | Inline SVG React components, tree-shakeable, fully typed |
+| [`@ginetex/vue`](https://www.npmjs.com/package/@ginetex/vue) | Inline SVG Vue 3 components |
+| [`@ginetex/elements`](https://www.npmjs.com/package/@ginetex/elements) | Web Components / Custom Elements (`<ginetex-symbol>`) |
+| [`@ginetex/css`](/?path=/docs/care-symbols-css-sprite--docs) | CSS background-image sprite, zero JavaScript |
+| [`@ginetex/sprite`](/?path=/docs/care-symbols-svg-sprite--docs) | SVG `<symbol>` sprite, single network request |
+| [`@ginetex/assets`](/?path=/docs/care-symbols-assets-api--docs) | Pre-built SVG, PNG, JPG, WebP at 5 sizes |
+| [`@ginetex/core`](/?path=/docs/care-symbols-assets-api--docs) | Typed symbol data and lookup API |
+
+---
+
+## Quick start
+
+### React
+
+```sh
+npm install @ginetex/react
+```
+
+```tsx
+import { SymbolById } from '@ginetex/react';
+
+<SymbolById id="wash-30" width={64} />
+```
+
+Named components are also generated for each symbol:
+
+```tsx
+import { Wash30, DoNotTumbleDry } from '@ginetex/react';
+
+<Wash30 width={64} />
+<DoNotTumbleDry width={64} title="Do not tumble dry" />
+```
+
+### Vue 3
+
+```sh
+npm install @ginetex/vue
+```
+
+```vue
+<script setup>
+import { SymbolById } from '@ginetex/vue';
+</script>
+<template>
+  <SymbolById id="wash-30" :width="64" />
+</template>
+```
+
+### Web Components
+
+```sh
+npm install @ginetex/elements
+```
+
+```ts
+import { defineCustomElements } from '@ginetex/elements';
+defineCustomElements();
+```
+
+```html
+<ginetex-symbol symbol-id="wash-30" width="64"></ginetex-symbol>
+<ginetex-wash-30 width="64"></ginetex-wash-30>
+```
+
+### CSS sprite (no JavaScript)
+
+```sh
+npm install @ginetex/css
+```
+
+```js
+import '@ginetex/css/sprite.css';
+```
+
+```html
+<span class="ginetex-wash-30" style="display:inline-block;width:64px;height:64px"
+      role="img" aria-label="Wash at or below 30 °C"></span>
+```
+
+### SVG sprite
+
+```sh
+npm install @ginetex/sprite
+```
+
+```html
+<svg width="64" height="64" role="img" aria-label="Wash at or below 30 °C">
+  <title>Wash at or below 30 °C</title>
+  <use href="/path/to/sprite.svg#wash-30" />
+</svg>
+```
+
+### Programmatic API
+
+```ts
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@ginetex/core';
+
+const allSymbols = getAllSymbols();                        // CareSymbol[]
+const symbol     = getSymbol('wash-30');        // CareSymbol | undefined
+const drying = getSymbolsByCategory('drying');         // CareSymbol[]
+```
+
+---
+
+## License
+
+MIT. The symbol graphics are published under free licences on Wikimedia Commons — see each symbol's Wikimedia Commons page for the specific licence of its SVG artwork.

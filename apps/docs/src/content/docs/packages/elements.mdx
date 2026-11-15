@@ -1,0 +1,91 @@
+---
+title: "@ginetex/elements"
+description: Framework-agnostic Web Components for laundry care symbols, usable in any HTML environment.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+```sh
+npm install @ginetex/elements
+```
+
+## Registering elements
+
+Call `defineCustomElements()` once at your app's entry point before using any elements.
+
+```ts
+import { defineCustomElements } from '@ginetex/elements';
+
+defineCustomElements();
+```
+
+### Custom prefix
+
+By default elements are registered as `ginetex-*`. Pass a custom prefix to avoid collisions:
+
+```ts
+defineCustomElements('my-prefix'); // safe to combine with defineCustomElements()
+// Registers <my-prefix-symbol symbol-id="...">, <my-prefix-wash-30>, etc.
+```
+
+## Generic element
+
+Use `<ginetex-symbol>` when the symbol is determined at runtime via the `symbol-id` attribute.
+
+```html
+<ginetex-symbol symbol-id="wash-30" width="64" title="Wash at or below 30 °C"></ginetex-symbol>
+```
+
+## Named elements
+
+Each symbol also has a dedicated element named `ginetex-{code}` with no `symbol-id` needed.
+
+```html
+<ginetex-wash-30 width="64" title="Wash at or below 30 °C"></ginetex-wash-30>
+<ginetex-do-not-bleach width="48"></ginetex-do-not-bleach>
+<ginetex-do-not-tumble-dry width="48"></ginetex-do-not-tumble-dry>
+```
+
+## Attributes
+
+| Attribute     | Type     | Required              | Description                                       |
+|---------------|----------|-----------------------|---------------------------------------------------|
+| `symbol-id`     | `string` | Yes (`<ginetex-symbol>` only) | Symbol ID, e.g. `"wash-30"`.           |
+| `width`       | `string` | No                    | Width in pixels as a string, e.g. `"64"`.         |
+| `height`      | `string` | No                    | Height in pixels as a string, e.g. `"64"`.        |
+| `title`       | `string` | No                    | Sets the SVG `<title>` for screen readers.        |
+| `description` | `string` | No                    | Sets the SVG `<desc>` for additional context.     |
+| `aria-label`  | `string` | No                    | Labels the `<svg>` directly instead of via `<title>`/`<desc>`. |
+
+All attributes are reactive — changing them updates the rendered SVG immediately.
+
+## Framework usage
+
+<Tabs>
+  <TabItem label="Vue 3">
+```vue
+<!-- vite.config.ts: set compilerOptions.isCustomElement = (tag) => tag.startsWith('ginetex-') -->
+<template>
+  <ginetex-symbol symbol-id="wash-30" width="64" title="Wash at or below 30 °C" />
+</template>
+```
+  </TabItem>
+  <TabItem label="Angular">
+```ts
+// In your NgModule or standalone component, add CUSTOM_ELEMENTS_SCHEMA
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  template: `<ginetex-symbol symbol-id="wash-30" width="64" title="Wash at or below 30 °C"></ginetex-symbol>`,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppComponent {}
+```
+  </TabItem>
+</Tabs>
+
+## Accessibility
+
+Each element renders an `<svg>` with `role="img"`. Provide a `title` attribute to give the symbol an accessible name. For decorative usage, omit `title` and set `aria-hidden="true"` on the element itself.

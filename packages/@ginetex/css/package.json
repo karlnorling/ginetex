@@ -1,0 +1,71 @@
+{
+  "name": "@ginetex/css",
+  "version": "0.0.0",
+  "description": "CSS background-image sprite for laundry care symbols — class-based display, no JavaScript required",
+  "keywords": [
+    "background-image",
+    "care-label",
+    "care-symbols",
+    "css",
+    "css-sprite",
+    "ginetex",
+    "iso-3758",
+    "laundry",
+    "laundry-symbols",
+    "pictogram",
+    "sprite",
+    "textile-care",
+    "utility",
+    "vanilla"
+  ],
+  "homepage": "https://karlnorling.github.io/ginetex/",
+  "bugs": {
+    "url": "https://github.com/karlnorling/ginetex/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlnorling/ginetex.git",
+    "directory": "packages/@ginetex/css"
+  },
+  "files": [
+    "dist/",
+    "sprite.css",
+    "package.json",
+    "README.md"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/esm/index.d.ts"
+    },
+    "./sprite.css": "./sprite.css"
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'})); require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'}))\"",
+    "test": "jest",
+    "type-check": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@ginetex/assets": "^0.0.0",
+    "@ginetex/core": "^0.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.15",
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
+  },
+  "author": {
+    "name": "Karl Norling",
+    "url": "https://github.com/karlnorling"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

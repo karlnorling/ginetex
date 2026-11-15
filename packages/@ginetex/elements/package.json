@@ -1,0 +1,66 @@
+{
+  "name": "@ginetex/elements",
+  "version": "0.0.0",
+  "description": "Accessible Web Components (Custom Elements) for all laundry care symbols — framework-agnostic, zero runtime dependencies",
+  "keywords": [
+    "accessible",
+    "care-label",
+    "care-symbols",
+    "custom-elements",
+    "ginetex",
+    "iso-3758",
+    "laundry",
+    "laundry-symbols",
+    "pictogram",
+    "svg",
+    "textile-care",
+    "typescript",
+    "web-components"
+  ],
+  "homepage": "https://karlnorling.github.io/ginetex/",
+  "bugs": {
+    "url": "https://github.com/karlnorling/ginetex/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlnorling/ginetex.git",
+    "directory": "packages/@ginetex/elements"
+  },
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'})); require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'}))\"",
+    "test": "jest",
+    "type-check": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@ginetex/core": "^0.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "ts-jest": "^29.4.15",
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
+  },
+  "author": {
+    "name": "Karl Norling",
+    "url": "https://github.com/karlnorling"
+  },
+  "sideEffects": false
+}
