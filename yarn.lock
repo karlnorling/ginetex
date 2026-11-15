@@ -1675,13 +1675,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ginetex/assets@npm:^0.0.0, @ginetex/assets@workspace:*, @ginetex/assets@workspace:packages/@ginetex/assets":
+"@ginetex/assets@npm:^0.1.0, @ginetex/assets@workspace:*, @ginetex/assets@workspace:packages/@ginetex/assets":
   version: 0.0.0-use.local
   resolution: "@ginetex/assets@workspace:packages/@ginetex/assets"
   languageName: unknown
   linkType: soft
 
-"@ginetex/core@npm:^0.0.0, @ginetex/core@workspace:*, @ginetex/core@workspace:packages/@ginetex/core":
+"@ginetex/core@npm:^0.1.0, @ginetex/core@workspace:*, @ginetex/core@workspace:packages/@ginetex/core":
   version: 0.0.0-use.local
   resolution: "@ginetex/core@workspace:packages/@ginetex/core"
   dependencies:
@@ -1698,8 +1698,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ginetex/css@workspace:packages/@ginetex/css"
   dependencies:
-    "@ginetex/assets": "npm:^0.0.0"
-    "@ginetex/core": "npm:^0.0.0"
+    "@ginetex/assets": "npm:^0.1.0"
+    "@ginetex/core": "npm:^0.1.0"
     "@types/jest": "npm:^30.0.0"
     "@typescript/native": "npm:typescript@^7.0.2"
     jest: "npm:^30.5.2"
@@ -1712,7 +1712,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ginetex/elements@workspace:packages/@ginetex/elements"
   dependencies:
-    "@ginetex/core": "npm:^0.0.0"
+    "@ginetex/core": "npm:^0.1.0"
     "@types/jest": "npm:^30.0.0"
     "@typescript/native": "npm:typescript@^7.0.2"
     jest: "npm:^30.5.2"
@@ -1726,7 +1726,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ginetex/react@workspace:packages/@ginetex/react"
   dependencies:
-    "@ginetex/core": "npm:^0.0.0"
+    "@ginetex/core": "npm:^0.1.0"
     "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:^19.3.0"
     "@types/react-dom": "npm:^19"
@@ -1752,7 +1752,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ginetex/vue@workspace:packages/@ginetex/vue"
   dependencies:
-    "@ginetex/core": "npm:^0.0.0"
+    "@ginetex/core": "npm:^0.1.0"
     "@types/jest": "npm:^30.0.0"
     "@typescript/native": "npm:typescript@^7.0.2"
     "@vue/compiler-dom": "npm:^3.5.45"

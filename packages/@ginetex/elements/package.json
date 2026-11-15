@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/elements",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Accessible Web Components (Custom Elements) for all laundry care symbols — framework-agnostic, zero runtime dependencies",
   "keywords": [
     "accessible",
@@ -48,7 +48,7 @@
     "type-check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@ginetex/core": "^0.0.0"
+    "@ginetex/core": "^0.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
