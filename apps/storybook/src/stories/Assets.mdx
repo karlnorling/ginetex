@@ -1,0 +1,139 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Care Symbols/Assets & API" />
+
+# Assets & Programmatic API
+
+The `@ginetex/core` package exposes typed data for all laundry care symbols alongside helper functions for filtering and lookup. The `@ginetex/assets` package provides pre-built image files at multiple resolutions.
+
+---
+
+## Installation
+
+```sh
+npm install @ginetex/core @ginetex/assets
+```
+
+---
+
+## Programmatic API
+
+```ts
+import {
+  getAllSymbols,
+  getSymbol,
+  getSymbolsByCategory,
+} from '@ginetex/core';
+```
+
+### `getAllSymbols()`
+
+Returns all care symbols.
+
+```ts
+const all = getAllSymbols();
+// → CareSymbol[]
+```
+
+### `getSymbol(id)`
+
+Look up a single symbol by its slug ID.
+
+```ts
+const wash30 = getSymbol('wash-30');
+// → CareSymbol | undefined
+
+const noTumbleDry = getSymbol('do-not-tumble-dry');
+```
+
+### `getSymbolsByCategory(category)`
+
+Filter symbols by care treatment.
+
+```ts
+const washing          = getSymbolsByCategory('washing');           // wash tub
+const bleaching        = getSymbolsByCategory('bleaching');         // triangle
+const drying           = getSymbolsByCategory('drying');            // square
+const ironing          = getSymbolsByCategory('ironing');           // iron
+const professionalCare = getSymbolsByCategory('professional-care'); // circle
+```
+
+---
+
+## `CareSymbol` type
+
+```ts
+interface CareSymbol {
+  id: string;          // e.g. 'wash-30'
+  code: string;        // e.g. 'wash-30' (same as id)
+  name: string;        // e.g. 'Wash at or below 30 °C'
+  category: CareSymbolCategory;
+  description: string; // accessible description
+  svg: string;         // inline SVG markup
+  assets: CareSymbolAssets;
+}
+
+interface CareSymbolAssets {
+  svg: string;                    // relative path to original SVG
+  png: Record<number, string>;    // size → relative path (240, 512, 768, 1024, 2048)
+  jpg: Record<number, string>;    // same sizes
+  webp: Record<number, string>;   // same sizes
+}
+
+type CareSymbolCategory = 'washing' | 'bleaching' | 'drying' | 'ironing' | 'professional-care';
+```
+
+---
+
+## Categories
+
+| Category | Symbols | Base shape | Covers |
+| -------- | ------- | ---------- | ------ |
+| `washing` | 9 | Wash tub | Maximum temperature, mild / very mild process, hand wash |
+| `bleaching` | 5 | Triangle | Any bleach, oxygen / non-chlorine only, do not bleach |
+| `drying` | 12 | Square | Tumble drying (dots = heat) and natural drying (line, flat, drip, shade) |
+| `ironing` | 5 | Iron | Maximum soleplate temperature (dots = heat) |
+| `professional-care` | 12 | Circle | Professional dry cleaning (P, F solvents) and wet cleaning (W) |
+
+---
+
+## Asset files
+
+The `@ginetex/assets` package ships pre-converted raster images at five resolutions in PNG, JPG, and WebP formats alongside the original SVGs.
+
+### Directory layout
+
+```
+assets/
+  washing/
+    wash-30/
+      wash-30.svg
+      wash-30_240x240.png
+      wash-30_512x512.png
+      wash-30_768x768.png
+      wash-30_1024x1024.png
+      wash-30_2048x2048.png
+      wash-30_240x240.jpg
+      wash-30_240x240.webp
+      …
+  bleaching/
+    do-not-bleach/
+      do-not-bleach.svg
+      …
+  drying/
+  ironing/
+  professional-care/
+```
+
+### Resolve asset paths via the API
+
+```ts
+import { getSymbol } from '@ginetex/core';
+
+const symbol = getSymbol('wash-30');
+if (symbol) {
+  console.log(symbol.assets.svg);       // 'washing/wash-30/wash-30.svg'
+  console.log(symbol.assets.png[512]);  // 'washing/wash-30/wash-30_512x512.png'
+  console.log(symbol.assets.webp[240]); // 'washing/wash-30/wash-30_240x240.webp'
+}
+```

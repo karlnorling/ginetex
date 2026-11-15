@@ -1,0 +1,79 @@
+---
+title: "@ginetex/css"
+description: CSS sprite classes for laundry care symbols — no JavaScript required.
+---
+
+## Installation
+
+```sh
+npm install @ginetex/css
+```
+
+## Setup
+
+Import the stylesheet once in your project's entry point:
+
+```ts
+import '@ginetex/css/sprite.css';
+```
+
+Or link it in HTML:
+
+```html
+<link rel="stylesheet" href="node_modules/@ginetex/css/sprite.css" />
+```
+
+## Usage
+
+Add the class `ginetex-{code}` to any element to display that symbol as a background image. Set explicit dimensions on the element.
+
+```html
+<span class="ginetex-wash-30" style="display:inline-block;width:64px;height:64px;"></span>
+```
+
+## Class name patterns
+
+| Class                         | Symbol                   | Category            |
+|-------------------------------|--------------------------|---------------------|
+| `ginetex-wash-30`             | Wash at or below 30 °C   | `washing`           |
+| `ginetex-do-not-bleach`       | Do not bleach            | `bleaching`         |
+| `ginetex-do-not-tumble-dry`   | Do not tumble dry        | `drying`            |
+| `ginetex-iron-low`            | Iron at low temperature  | `ironing`           |
+| `ginetex-dry-clean-pce`       | Dry clean, PCE only      | `professional-care` |
+
+The full class list is `ginetex-` followed by each symbol code.
+
+## Accessibility
+
+Background images are invisible to assistive technologies and do not appear in the accessibility tree. Any usage of CSS symbol classes must be accompanied by explicit ARIA attributes on the host element.
+
+```html
+<!-- Correct: role + aria-label on the element carrying the class -->
+<span
+  class="ginetex-wash-30"
+  role="img"
+  aria-label="Wash at or below 30 °C"
+  style="display:inline-block;width:64px;height:64px;"
+></span>
+```
+
+Do not rely on surrounding text alone — screen readers will skip the visual entirely unless `role="img"` and `aria-label` (or `aria-labelledby`) are present.
+
+## Full example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="node_modules/@ginetex/css/sprite.css" />
+  <style>
+    .symbol { display: inline-block; width: 64px; height: 64px; }
+  </style>
+</head>
+<body>
+  <span class="symbol ginetex-wash-30" role="img" aria-label="Wash at or below 30 °C"></span>
+  <span class="symbol ginetex-iron-low" role="img" aria-label="Iron at low temperature"></span>
+  <span class="symbol ginetex-do-not-tumble-dry" role="img" aria-label="Do not tumble dry"></span>
+</body>
+</html>
+```

@@ -1,0 +1,23 @@
+// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
+// Run 'yarn generate' to regenerate.
+
+import type { ParsedSvg } from '@ginetex/core';
+import { SymbolElement } from './SymbolElement.js';
+import type { SymbolElementContent } from './SymbolElement.js';
+
+const _svg: ParsedSvg = {
+  attrs: "xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 375 375\"",
+  body: "<path d=\"M297.025 187.186c.01-62.665-49.029-113.47-109.524-113.47S77.967 124.52 77.977 187.185c-.01 62.665 49.029 113.47 109.524 113.47s109.534-50.805 109.524-113.47z\" style=\"fill:none;fill-opacity:.75;fill-rule:evenodd;stroke:#000;stroke-width:9.7576847;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1\"/><path d=\"M63.728 63.728h247.544v247.544H63.728z\" style=\"fill:none;fill-opacity:.75;fill-rule:evenodd;stroke:#000;stroke-width:12.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\"/><path d=\"M206.25 187.5a18.75 18.75 0 1 1-37.5 0 18.75 18.75 0 1 1 37.5 0z\" style=\"fill:#000;fill-opacity:1;fill-rule:evenodd;stroke:#000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1\"/>",
+  height: "375",
+  width: "375",
+};
+const _title = "Tumble drying (low temperature)";
+const _description = "Tumble drying (low temperature)";
+
+export class TumbleDryLow extends SymbolElement {
+  static readonly tagName = 'ginetex-tumble-dry-low';
+
+  protected content(): SymbolElementContent {
+    return { description: _description, svg: _svg, title: _title };
+  }
+}

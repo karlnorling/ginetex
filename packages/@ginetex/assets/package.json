@@ -1,0 +1,45 @@
+{
+  "name": "@ginetex/assets",
+  "version": "0.0.0",
+  "description": "Static image assets for all laundry care symbols — SVG, PNG, JPG, and WebP at five sizes (240–2048 px)",
+  "keywords": [
+    "assets",
+    "care-label",
+    "care-symbols",
+    "ginetex",
+    "icons",
+    "images",
+    "iso-3758",
+    "jpg",
+    "laundry",
+    "laundry-symbols",
+    "pictogram",
+    "png",
+    "svg",
+    "textile-care",
+    "webp"
+  ],
+  "homepage": "https://karlnorling.github.io/ginetex/",
+  "bugs": {
+    "url": "https://github.com/karlnorling/ginetex/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlnorling/ginetex.git",
+    "directory": "packages/@ginetex/assets"
+  },
+  "files": [
+    "assets/",
+    "!assets/svg-map.json",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    "./assets/*": "./assets/*"
+  },
+  "author": {
+    "name": "Karl Norling",
+    "url": "https://github.com/karlnorling"
+  }
+}

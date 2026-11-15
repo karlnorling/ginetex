@@ -1,0 +1,86 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as CSSSpriteStories from './CSSSprite.stories';
+
+<Meta of={CSSSpriteStories} />
+
+# CSS Sprite
+
+Import `sprite.css` to get a set of `.ginetex-*` utility classes. Apply a class to any block element sized with `width`/`height` — no JavaScript required.
+
+## Installation
+
+```sh
+npm install @ginetex/css
+```
+
+## Setup
+
+```js
+import '@ginetex/css/sprite.css';
+```
+
+```css
+@import '@ginetex/css/sprite.css';
+```
+
+## Usage
+
+```html
+<span
+  class="ginetex-wash-30"
+  style="display:inline-block; width:64px; height:64px"
+  role="img"
+  aria-label="Wash at or below 30 °C"
+></span>
+```
+
+### CSS helper
+
+```ts
+import { getCssClassName } from '@ginetex/css';
+
+const cls = getCssClassName('wash-30'); // → 'ginetex-wash-30'
+element.className = cls;
+```
+
+---
+
+## Class name pattern
+
+Classes follow the pattern `ginetex-{code}` — e.g. `ginetex-wash-30`, `ginetex-iron`, `ginetex-do-not-bleach`.
+
+---
+
+## Washing symbols
+
+<Canvas of={CSSSpriteStories.Washing} />
+
+---
+
+## Bleaching symbols
+
+<Canvas of={CSSSpriteStories.Bleaching} />
+
+---
+
+## Drying symbols
+
+<Canvas of={CSSSpriteStories.Drying} />
+
+---
+
+## Ironing symbols
+
+<Canvas of={CSSSpriteStories.Ironing} />
+
+---
+
+## Professional care symbols
+
+<Canvas of={CSSSpriteStories.ProfessionalCare} />
+
+---
+
+## All symbols
+
+<Canvas of={CSSSpriteStories.AllSymbols} />

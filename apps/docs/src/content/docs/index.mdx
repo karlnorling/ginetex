@@ -1,0 +1,69 @@
+---
+title: GINETEX Care Symbols
+description: >-
+  Accessible laundry care symbols for React, Vue 3, Web Components, CSS, and static assets.
+  43 symbols across 5 categories. Zero runtime dependencies.
+hero:
+  tagline: >-
+    43 laundry care symbols for React, Vue 3, Web Components, CSS, and more.
+    Tree-shakeable. Zero dependencies. Fully accessible.
+  actions:
+    - text: Get started
+      link: /ginetex/getting-started/
+      icon: right-arrow
+    - text: Browse all symbols
+      link: /ginetex/gallery/
+      icon: seti:image
+      variant: secondary
+    - text: GitHub
+      link: https://github.com/karlnorling/ginetex
+      icon: github
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Why GINETEX Care Symbols?
+
+The GINETEX care symbols, standardised as ISO 3758, are the washing, bleaching, drying, ironing
+and professional-care pictograms printed on textile care labels. This library packages all 43
+symbols as accessible, fully typed components ready to drop into any project.
+
+<CardGrid>
+  <Card title="React & Vue 3" icon="puzzle">
+    Named components and a `SymbolById` helper for dynamic rendering. Tree-shakeable — only the
+    symbols you import end up in your bundle.
+  </Card>
+  <Card title="Web Components" icon="laptop">
+    Framework-agnostic Custom Elements. Works with Angular, Svelte, plain HTML — anywhere.
+  </Card>
+  <Card title="CSS Sprite" icon="seti:css">
+    Zero JavaScript option. Display any symbol with a single class and no JS runtime.
+  </Card>
+  <Card title="Accessible by default" icon="approve-check-circle">
+    Every component renders with `role="img"`, `aria-labelledby`, `<title>`, and `<desc>` inside
+    the SVG.
+  </Card>
+</CardGrid>
+
+## Packages
+
+| Package | Version | Description |
+| ------- | ------- | ----------- |
+| [`@ginetex/react`](./packages/react/) | [![npm](https://img.shields.io/npm/v/@ginetex/react)](https://www.npmjs.com/package/@ginetex/react) | React components (inline SVG) |
+| [`@ginetex/vue`](./packages/vue/) | [![npm](https://img.shields.io/npm/v/@ginetex/vue)](https://www.npmjs.com/package/@ginetex/vue) | Vue 3 components (inline SVG) |
+| [`@ginetex/elements`](./packages/elements/) | [![npm](https://img.shields.io/npm/v/@ginetex/elements)](https://www.npmjs.com/package/@ginetex/elements) | Web Components (Custom Elements) |
+| [`@ginetex/css`](./packages/css/) | [![npm](https://img.shields.io/npm/v/@ginetex/css)](https://www.npmjs.com/package/@ginetex/css) | CSS background-image sprite |
+| [`@ginetex/sprite`](./packages/sprite/) | [![npm](https://img.shields.io/npm/v/@ginetex/sprite)](https://www.npmjs.com/package/@ginetex/sprite) | SVG symbol sprite |
+| [`@ginetex/assets`](./packages/assets/) | [![npm](https://img.shields.io/npm/v/@ginetex/assets)](https://www.npmjs.com/package/@ginetex/assets) | Static SVG/PNG/JPG/WebP files |
+| [`@ginetex/core`](./packages/core/) | [![npm](https://img.shields.io/npm/v/@ginetex/core)](https://www.npmjs.com/package/@ginetex/core) | TypeScript data and lookup API |
+
+## Categories
+
+| Category | Symbols | Base shape | Covers |
+| -------- | ------- | ---------- | ------ |
+| `washing` | 9 | Wash tub | Maximum temperature, mild / very mild process, hand wash |
+| `bleaching` | 5 | Triangle | Any bleach, oxygen / non-chlorine only, do not bleach |
+| `drying` | 12 | Square | Tumble drying (dots = heat) and natural drying (line, flat, drip, shade) |
+| `ironing` | 5 | Iron | Maximum soleplate temperature (dots = heat) |
+| `professional-care` | 12 | Circle | Professional dry cleaning (P, F solvents) and wet cleaning (W) |

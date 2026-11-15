@@ -1,0 +1,8 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@ginetex/core": ["../../packages/@ginetex/core/src/index.ts"]
+    }
+  }
+}
