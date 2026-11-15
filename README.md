@@ -4,7 +4,8 @@ Accessible, framework-agnostic packages for the **GINETEX / ISO 3758** laundry c
 
 [![CI](https://github.com/karlnorling/ginetex/actions/workflows/ci.yml/badge.svg)](https://github.com/karlnorling/ginetex/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Storybook](https://img.shields.io/badge/Storybook-docs-FF4785)](https://karlnorling.github.io/ginetex/)
+[![Docs](https://img.shields.io/badge/docs-Starlight-8A2BE2)](https://karlnorling.github.io/ginetex/)
+[![Storybook](https://img.shields.io/badge/Storybook-live-FF4785)](https://karlnorling.github.io/ginetex/storybook/)
 
 ---
 
@@ -183,8 +184,10 @@ yarn test
 
 ### Storybook
 
+The published Storybook lives at <https://karlnorling.github.io/ginetex/storybook/>. To run it locally:
+
 ```sh
-cd apps/storybook && yarn storybook
+yarn storybook
 ```
 
 ---

@@ -42,7 +42,10 @@ export default defineConfig({
         },
         {
           label: 'Reference',
-          items: [{ label: 'Symbol Gallery', slug: 'gallery' }],
+          items: [
+            { label: 'Symbol Gallery', slug: 'gallery' },
+            { label: 'Storybook', link: '/storybook/' },
+          ],
         },
       ],
     }),
