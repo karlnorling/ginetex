@@ -12,7 +12,7 @@ const _svg: ParsedSvg = {
   height: "375",
   width: "375",
 };
-const _title = "Wash at or below 30 °C (86 °F) (US, 1 dot, ●)";
+const _title = "Wash at or below 30 °C";
 const _description = "Wash at or below 30 °C (86 °F) (US, 1 dot, ●)";
 
 export const Wash30 = React.memo<SymbolProps>((props) => (

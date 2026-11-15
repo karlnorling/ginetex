@@ -68,6 +68,18 @@ describe('symbol data', () => {
     for (const { assets } of symbols) expect(assets.svg).not.toMatch(/_\d+x\d+\.svg$/);
   });
 
+  it('names are short and unique; the full caption stays in the description', () => {
+    const names = symbols.map((s) => s.name);
+    expect(new Set(names).size).toBe(names.length);
+    for (const { name } of symbols) expect(name).not.toMatch(/\(US,|°F/);
+    expect(getSymbol('wash-30')?.name).toBe('Wash at or below 30 °C');
+    expect(getSymbol('wash-30')?.description).toContain('US, 1 dot');
+  });
+
+  it('inline svgs have no ISO 7000 crop marks', () => {
+    for (const { svg } of symbols) expect(svg).not.toMatch(/#999\b/);
+  });
+
   it('inline svgs contain no scripts or event handlers', () => {
     for (const { svg } of symbols) {
       expect(svg).not.toMatch(/<script/i);
