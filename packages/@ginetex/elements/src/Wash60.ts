@@ -11,7 +11,7 @@ const _svg: ParsedSvg = {
   height: "375",
   width: "375",
 };
-const _title = "Wash at or below 60 °C (140 °F) (US, 4 dots, ●●●●)";
+const _title = "Wash at or below 60 °C";
 const _description = "Wash at or below 60 °C (140 °F) (US, 4 dots, ●●●●)";
 
 export class Wash60 extends SymbolElement {

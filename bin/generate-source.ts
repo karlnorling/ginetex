@@ -108,6 +108,8 @@ const collectEntries = (scraped: ScrapedData, svgMap: Record<string, string>): C
   >) {
     for (const symbol of symbols) {
       const { code, name } = symbol;
+      // Older caches predate `description`; fall back to the name.
+      const description = symbol.description ?? name;
       const svgKey = findSvgKey(category, code);
 
       if (!svgKey) {
@@ -124,7 +126,7 @@ const collectEntries = (scraped: ScrapedData, svgMap: Record<string, string>): C
         assets: buildAssets(svgKey),
         category,
         code,
-        description: name,
+        description,
         id,
         name,
         svg: scopeIds(normalizeSvg(optimizeSvg(svgContent)), id),

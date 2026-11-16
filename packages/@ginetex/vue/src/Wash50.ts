@@ -12,7 +12,7 @@ const _svg: ParsedSvg = {
   height: "375",
   width: "375",
 };
-const _title = "Wash at or below 50 °C (122 °F) (US, 3 dots, ●●●)";
+const _title = "Wash at or below 50 °C";
 const _description = "Wash at or below 50 °C (122 °F) (US, 3 dots, ●●●)";
 
 export const Wash50 = defineComponent({

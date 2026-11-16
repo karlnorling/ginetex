@@ -14,7 +14,7 @@ const StyleInjector = ({ size }: { size: number }) => {
     .map((symbol) => {
       const cls = getCssClassName(symbol.id);
       if (!cls) return '';
-      return `.${cls} { background-image: url('/assets/${symbol.assets.svg}'); background-size: contain; background-repeat: no-repeat; background-position: center; }`;
+      return `.${cls} { background-image: url('${import.meta.env.BASE_URL}assets/${symbol.assets.svg}'); background-size: contain; background-repeat: no-repeat; background-position: center; }`;
     })
     .filter(Boolean)
     .join('\n');

@@ -11,7 +11,7 @@ const _svg: ParsedSvg = {
   height: "375",
   width: "375",
 };
-const _title = "Do not bleach";
+const _title = "Do not bleach (older symbol)";
 const _description = "Do not bleach";
 
 export class DoNotBleachLegacy extends SymbolElement {

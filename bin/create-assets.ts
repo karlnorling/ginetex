@@ -141,6 +141,35 @@ const convertImages = async (image: string): Promise<void> => {
 // ---------------------------------------------------------------------------
 
 /**
+ * ISO 7000 artwork (e.g. the "wash 30 mild" symbols) ships with a grey (#999)
+ * frame of corner crop marks. It is a drawing guide, not part of the symbol,
+ * and shows up as stray corners in every rendering.
+ */
+// Either one grey <path>, or a grey <g> of corner paths (no nested groups).
+const CROP_MARK_PATH_RE = /\s*<path\b[^>]*\bstroke="#999"[^>]*\/>/g;
+const CROP_MARK_GROUP_RE = /\s*<g\b[^>]*\bstroke="#999"[^>]*>(?:(?!<g\b)[\s\S])*?<\/g>/g;
+
+export const stripCropMarks = (svg: string): string =>
+  svg.replace(CROP_MARK_GROUP_RE, '').replace(CROP_MARK_PATH_RE, '');
+
+/**
+ * Strips crop marks from a source SVG in place. When that changes the file,
+ * deletes its raster copies so {@link convertImages} renders them again.
+ */
+const cleanSourceSvg = async (file: string): Promise<void> => {
+  const raw = await fs.promises.readFile(file, 'utf-8');
+  const cleaned = stripCropMarks(raw);
+  if (cleaned === raw) return;
+
+  await fs.promises.writeFile(file, cleaned, 'utf-8');
+  const base = path.basename(file, '.svg');
+  for (const raster of globSync(path.join(path.dirname(file), `${base}_*x*.{jpg,png,webp}`))) {
+    await fs.promises.rm(raster, { force: true });
+  }
+  console.log(`  Removed crop marks: ${path.basename(file)}`);
+};
+
+/**
  * Downloads one symbol's SVG to `{destDir}/{code}.svg` and rasterises it. The
  * file is named after the symbol code (not the German Commons file name), so
  * sprite IDs and CSS classes can be read straight off the basename.
@@ -154,6 +183,7 @@ const processImage = async (destDir: string, code: string, imagePageUrl: string)
     const stat = await fs.promises.stat(dest);
     if (stat.size > 0) {
       console.log(`  Skipping (exists): ${path.basename(dest)}`);
+      await cleanSourceSvg(dest);
       await convertImages(dest);
       return;
     }
@@ -164,6 +194,7 @@ const processImage = async (destDir: string, code: string, imagePageUrl: string)
   const imageUrl = await downloadImagePage(imagePageUrl);
   await downloadImage(dest, imageUrl);
   await sleep(300);
+  await cleanSourceSvg(dest);
   await convertImages(dest);
 };
 

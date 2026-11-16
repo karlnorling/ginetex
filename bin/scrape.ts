@@ -30,8 +30,10 @@ export type CareSymbolCategory =
 export interface ScrapedSymbol {
   /** Stable code assigned in {@link CODES}, e.g. `"wash-30"`. */
   code: string;
-  /** Human-readable description from the Wikipedia gallery caption. */
+  /** Short human-readable name, used as the accessible title. See {@link toName}. */
   name: string;
+  /** The full Wikipedia gallery caption, including any US / Fahrenheit notes. */
+  description: string;
   /** Wikimedia Commons file page URL for the symbol's SVG. */
   imageUrl: string | null;
 }
@@ -146,6 +148,26 @@ const cleanName = (text: string): string =>
     .replace(/\s+/g, ' ')
     .trim();
 
+/**
+ * Names that the caption alone gets wrong, keyed by code. The article captions
+ * both bleach-prohibition variants "Do not bleach".
+ */
+const NAME_OVERRIDES: Readonly<Record<string, string>> = {
+  'do-not-bleach-legacy': 'Do not bleach (older symbol)',
+};
+
+/**
+ * Derives the short name from a cleaned caption. The washing captions end
+ * with the North American dot equivalent, e.g. "Wash at or below 30 °C (86 °F)
+ * (US, 1 dot, ●)"; that note stays in the description but would make every
+ * screen reader title long, so it and the Fahrenheit conversion are dropped.
+ */
+export const toName = (caption: string): string =>
+  caption
+    .replace(/\s*\(US,[^)]*\)/g, '')
+    .replace(/\s*\(\d+ °F\)/g, '')
+    .trim();
+
 /** True for any section heading element or the `div.mw-heading` wrapper Wikipedia now uses. */
 const isHeading = (node: ReturnType<typeof parse>): boolean => {
   const tag = node.tagName?.toLowerCase();
@@ -192,8 +214,9 @@ const scrapeSection = (htmlData: ReturnType<typeof parse>, headingId: string): S
 
         symbols.push({
           code,
+          description: caption || code,
           imageUrl: new URL(href!, WIKIPEDIA_ORIGIN).href,
-          name: caption || code,
+          name: NAME_OVERRIDES[code] ?? (toName(caption) || code),
         });
       }
     }
