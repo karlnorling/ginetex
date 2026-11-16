@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Accessible Vue 3 components for all laundry care symbols — fully typed, zero runtime dependencies beyond Vue",
   "keywords": [
     "accessible",
@@ -50,7 +50,7 @@
     "type-check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@ginetex/core": "^0.1.0"
+    "@ginetex/core": "^0.1.1"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

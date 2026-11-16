@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript registry and lookup helpers for laundry care symbols — includes inline SVG, asset paths, and descriptions",
   "keywords": [
     "accessibility",

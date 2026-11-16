@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/assets",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Static image assets for all laundry care symbols — SVG, PNG, JPG, and WebP at five sizes (240–2048 px)",
   "keywords": [
     "assets",
