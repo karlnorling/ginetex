@@ -1,0 +1,44 @@
+{
+  "name": "@ginetex/sprite",
+  "version": "0.1.0",
+  "description": "SVG symbol sprite for all laundry care symbols — embed any symbol inline with <use href='#id'>",
+  "keywords": [
+    "care-label",
+    "care-symbols",
+    "ginetex",
+    "icons",
+    "inline-svg",
+    "iso-3758",
+    "laundry",
+    "laundry-symbols",
+    "pictogram",
+    "sprite",
+    "svg",
+    "svg-sprite",
+    "textile-care"
+  ],
+  "homepage": "https://karlnorling.github.io/ginetex/",
+  "bugs": {
+    "url": "https://github.com/karlnorling/ginetex/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlnorling/ginetex.git",
+    "directory": "packages/@ginetex/sprite"
+  },
+  "files": [
+    "sprite.svg",
+    "sprite-ids.json",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    "./sprite.svg": "./sprite.svg",
+    "./sprite-ids.json": "./sprite-ids.json"
+  },
+  "author": {
+    "name": "Karl Norling",
+    "url": "https://github.com/karlnorling"
+  }
+}
