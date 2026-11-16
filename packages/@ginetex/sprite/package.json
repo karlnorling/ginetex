@@ -1,6 +1,6 @@
 {
   "name": "@ginetex/sprite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SVG symbol sprite for all laundry care symbols — embed any symbol inline with <use href='#id'>",
   "keywords": [
     "care-label",
